@@ -13,11 +13,6 @@ from neo4j import GraphDatabase
 import spacy
 from spacy.tokens import Doc
 
-try:
-    import openai
-except ImportError:  # Optional dependency
-    openai = None  # type: ignore
-
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

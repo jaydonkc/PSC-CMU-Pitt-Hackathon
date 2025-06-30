@@ -1,6 +1,6 @@
 # GraphRAG: Graph-Based Retrieval-Augmented Generation for Biomedical Knowledge
 
-GraphRAG combines a biomedical knowledge graph with retrieval-augmented generation to answer complex scientific questions. The project demonstrates a lightweight implementation using Python, Neo4j and the OpenAI API.
+GraphRAG combines a biomedical knowledge graph with retrieval-augmented generation to answer complex scientific questions. The project demonstrates a lightweight implementation using Python, Neo4j and local LLM inference via vLLM.
 
 ## Project Goals
 - Leverage GPU acceleration for graph-based retrieval and LLM inference.
@@ -24,6 +24,9 @@ GraphRAG combines a biomedical knowledge graph with retrieval-augmented generati
 
 The notebook shows how to collect PubMed data, load it into Neo4j and query it via the GraphReader agent.
 
+The agent defaults to using vLLM for local inference. Provide the path or model
+name via the `llm_model` parameter if you wish to load a different model.
+
 ## Scripts
 - `graphrag_data_pipeline.py` – retrieves documents from PubMed, extracts entities with spaCy and loads them as nodes and relationships into Neo4j.
 - `graphreader_agent.py` – a minimal multi-step reasoning agent that uses an LLM to formulate a plan, select nodes and produce an answer.
@@ -32,7 +35,7 @@ The notebook shows how to collect PubMed data, load it into Neo4j and query it v
 ## Requirements
 - Python 3.8+
 - Neo4j running locally
-- OpenAI API key (for LLM calls)
+- NVIDIA GPU with [vLLM](https://github.com/vllm-project/vllm) installed and a compatible HuggingFace model
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
